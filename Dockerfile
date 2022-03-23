@@ -27,12 +27,21 @@ USER neovim
 WORKDIR /.config/coc/extensions
 
 RUN if [ ! -f package.json ] ; then echo '{"dependencies": {}}' > package.json ; fi  \
-  && npm install coc-eslint coc-prettier coc-pairs coc-ultisnips coc-tsserver coc-json coc-html coc-css coc-fzf-preview --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
+  && npm install \
+  coc-css \
+  coc-eslint \
+  coc-html \
+  coc-json \
+  coc-pairs \
+  coc-prettier \
+  coc-snippets \
+  coc-tsserver --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
 WORKDIR /home/neovim
 
 RUN nvim +PlugInstall +qa  \
-  && nvim +"CocInstall -sync coc-tsserver|qa"  \
+  # && nvim +"CocInstall -sync coc-tsserver|qa"  \
+  && nvim +"CocInstall -sync coc-css coc-eslint coc-html coc-json coc-pairs coc-prettier coc-ultisnips coc-tsserver|qa"  \
   && mkdir workdir
 
 WORKDIR /home/neovim/workdir

@@ -191,8 +191,8 @@ let g:ale_fixers = {
 \   'rust': ['rustfmt'],
 \}
 
-let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_ctags_bin = '/usr/bin/ctags'
 
 " CoC extensions
-let g:coc_global_extensions = ['coc-tsserver']
+let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-html', 'coc-pairs', 'coc-prettier', 'coc-tsserver', 'coc-ultisnips']
 " let g:coc_node_path = 'node-ts'
