@@ -98,9 +98,10 @@ set rtp+=/usr/local/opt/fzf
 " tagbar
 let g:tagbar_autofocus = 1
 
-let g:deoplete#enable_at_startup = 1
+
+" let g:deoplete#enable_at_startup = 1
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " use 'f' to toggle filter
 let NERDTreeIgnore = ['\.DS_Store', '\.sass-cache']

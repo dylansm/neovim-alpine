@@ -40,7 +40,6 @@ RUN if [ ! -f package.json ] ; then echo '{"dependencies": {}}' > package.json ;
 WORKDIR /home/neovim
 
 RUN nvim +PlugInstall +qa  \
-  # && nvim +"CocInstall -sync coc-tsserver|qa"  \
   && nvim +"CocInstall -sync coc-css coc-eslint coc-html coc-json coc-pairs coc-prettier coc-ultisnips coc-tsserver|qa"  \
   && mkdir workdir
 

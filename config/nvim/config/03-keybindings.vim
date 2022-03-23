@@ -142,11 +142,11 @@ nmap <silent>\\ :TagbarToggle<CR>
 " inoremap <C-]> <C-x><C-o>
 
 " Dash for current word
-function! LookupCurrentWordInDash()
-  let cword = expand("<cword>")
-  :silent exec "!open 'dash://'" . cword
-  :redraw!
-endfunction
+" function! LookupCurrentWordInDash()
+  " let cword = expand("<cword>")
+  " :silent exec "!open 'dash://'" . cword
+  " :redraw!
+" endfunction
 
 nmap <silent><Leader>/ :call LookupCurrentWordInDash()<CR>
 
@@ -161,14 +161,49 @@ nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<CR>
 nmap <Leader>ll :set list!<CR>
 
 " Clojure
-nnoremap <Leader>sh :Slamhound<CR>
+" nnoremap <Leader>sh :Slamhound<CR>
 " Vim Fireplace
 " autocmd this so it's only on in clojure context
 " nmap <Leader>q cqq
 " nmap <Leader>c cqc
 " nmap ;c :Connect nrepl://127.0.0.1:50133 .<CR>
 
-au FileType rust nmap <leader>rr <Plug>(rust-doc)
-au FileType rust nmap <leader>rd <Plug>(rust-def)
-au FileType rust nmap <leader>rs <Plug>(rust-def-split)
-au FileType rust nmap rx <Plug>(rust-def-vertical)
+" au FileType rust nmap <leader>rr <Plug>(rust-doc)
+" au FileType rust nmap <leader>rd <Plug>(rust-def)
+" au FileType rust nmap <leader>rs <Plug>(rust-def-split)
+" au FileType rust nmap rx <Plug>(rust-def-vertical)
+
+
+" CoC Town
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
+" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
