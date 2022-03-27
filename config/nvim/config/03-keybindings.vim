@@ -187,11 +187,19 @@ let g:coc_snippet_next = '<c-j>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
 
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+
 " Use <leader>x for convert visual selected code to snippet
-xmap <leader>x  <Plug>(coc-convert-snippet)
+" xmap <leader>x  <Plug>(coc-convert-snippet)
+
 
 " Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 inoremap <silent><expr> <TAB>
@@ -207,3 +215,28 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
+" Cursor over
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
+" Auto tooltip
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
+
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
+" diagnostic list
+nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
+
+" workspace symbols
+nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
+
+" fix issue
+nmap <leader>do <Plug>(coc-codeaction)

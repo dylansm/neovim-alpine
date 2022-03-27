@@ -160,12 +160,15 @@ let g:tagbar_type_go = {
 
 " Emmet / Zen Coding
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,php,javascript,xml EmmetInstall
+au FileType html,css,php,javascript,xml EmmetInstall
 " let g:user_emmet_leader_key = '<c-y>'
 let g:user_emmet_leader_key = '<c-m>'
 let g:user_emmet_settings = {
 \  'indentation' : '  '
 \}
+
+" comments in jsonc
+au FileType json syntax match Comment +\/\/.\+$+
 
 let ropevim_enable_shortcuts = 1
 
