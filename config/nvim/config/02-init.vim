@@ -114,54 +114,54 @@ if exists("g:vdebug_options")
   let g:vdebug_options['port'] = 9001
 endif
 
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsExpandTrigger="<C-J>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsEditSplit="horizontal"
+" let g:UltiSnipsUsePythonVersion = 3
+" let g:UltiSnipsExpandTrigger="<C-J>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsEditSplit="horizontal"
 
-let NERDSpaceDelims=1
+" let NERDSpaceDelims=1
+
 " custom comments
-let g:NERDCustomDelimiters = {
-\ 'javascript.jsx': { 'left': '{/*', 'right': '*/}'}
-\ }
+" let g:NERDCustomDelimiters = {
+" \ 'javascript.jsx': { 'left': '{/*', 'right': '*/}'}
+" \ }
 
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬,trail:.
 set list listchars=tab:▸\ ,trail:.
 
-let g:tagbar_type_go = {
-  \ 'ctagstype' : 'go',
-  \ 'kinds'     : [
-      \ 'p:package',
-      \ 'i:imports:1',
-      \ 'c:constants',
-      \ 'v:variables',
-      \ 't:types',
-      \ 'n:interfaces',
-      \ 'w:fields',
-      \ 'e:embedded',
-      \ 'm:methods',
-      \ 'r:constructor',
-      \ 'f:functions'
-  \ ],
-  \ 'sro' : '.',
-  \ 'kind2scope' : {
-      \ 't' : 'ctype',
-      \ 'n' : 'ntype'
-  \ },
-  \ 'scope2kind' : {
-      \ 'ctype' : 't',
-      \ 'ntype' : 'n'
-  \ },
-  \ 'ctagsbin'  : 'gotags',
-  \ 'ctagsargs' : '-sort -silent'
-\ }
+" let g:tagbar_type_go = {
+  " \ 'ctagstype' : 'go',
+  " \ 'kinds'     : [
+      " \ 'p:package',
+      " \ 'i:imports:1',
+      " \ 'c:constants',
+      " \ 'v:variables',
+      " \ 't:types',
+      " \ 'n:interfaces',
+      " \ 'w:fields',
+      " \ 'e:embedded',
+      " \ 'm:methods',
+      " \ 'r:constructor',
+      " \ 'f:functions'
+  " \ ],
+  " \ 'sro' : '.',
+  " \ 'kind2scope' : {
+      " \ 't' : 'ctype',
+      " \ 'n' : 'ntype'
+  " \ },
+  " \ 'scope2kind' : {
+      " \ 'ctype' : 't',
+      " \ 'ntype' : 'n'
+  " \ },
+  " \ 'ctagsbin'  : 'gotags',
+  " \ 'ctagsargs' : '-sort -silent'
+" \ }
 
 " Emmet / Zen Coding
 let g:user_emmet_install_global = 0
-au FileType html,css,php,javascript,xml EmmetInstall
-" let g:user_emmet_leader_key = '<c-y>'
+au FileType html,css,php,javascript,xml,jsx,tsx EmmetInstall
 let g:user_emmet_leader_key = '<c-m>'
 let g:user_emmet_settings = {
 \  'indentation' : '  '
@@ -170,30 +170,24 @@ let g:user_emmet_settings = {
 " comments in jsonc
 au FileType json syntax match Comment +\/\/.\+$+
 
-let ropevim_enable_shortcuts = 1
+" let ropevim_enable_shortcuts = 1
 
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = "/Users/dylan/.cargo/bin/rustfmt"
-let g:racer_cmd = "/Users/dylan/.cargo/bin/racer"
+" let g:rustfmt_autosave = 1
+" let g:rustfmt_command = "/Users/dylan/.cargo/bin/rustfmt"
+" let g:racer_cmd = "/Users/dylan/.cargo/bin/racer"
 " let g:racer_experimental_completer = 1
 
-if filereadable('/Users/dylan/bin/linter_wrappers/eslint.sh')
-  " let g:ale_enabled = 0
-  let g:ale_linters = ['eslint']
-  let g:ale_javascript_eslint_use_global = 1
-  let g:ale_javascript_eslint_executable = '/Users/dylan/bin/linter_wrappers/eslint.sh'
-  " let b:ale_filename_mappings = {
-  " \ 'eslint': [
-  " \   ['/User/dylan/dev/microservices/blog/client/src', '/data'],
-  " \ ],
-  " \}
-endif
+" if filereadable('/Users/dylan/bin/linter_wrappers/eslint.sh')
+  " let g:ale_linters = ['eslint']
+  " let g:ale_javascript_eslint_use_global = 1
+  " let g:ale_javascript_eslint_executable = '/Users/dylan/bin/linter_wrappers/eslint.sh'
+" endif
 
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'css': ['stylelint'],
-\   'rust': ['rustfmt'],
-\}
+" let g:ale_fixers = {
+" \   'javascript': ['eslint'],
+" \   'css': ['stylelint'],
+" \   'rust': ['rustfmt'],
+" \}
 
 let g:tagbar_ctags_bin = '/usr/bin/ctags'
 

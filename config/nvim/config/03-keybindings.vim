@@ -28,7 +28,7 @@ endfunction
 nnoremap <silent> <M-L> :call ChooseProfileVariant("light")<CR>
 nnoremap <silent> <M-D> :call ChooseProfileVariant('')<CR>
 
-:map <F7> :setlocal spell! spelllang=en_us<CR>
+map <F7> :setlocal spell! spelllang=en_us<CR>
 
 " alt-shift + h,j,k,l keys
 map <silent>Ò :vertical res -10<CR>
@@ -83,9 +83,9 @@ inoremap <C-]> <C-o>a
 " Jump to the first placeholder by typing `<C-k>`.
 autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
 
-map <C-n> :cnext<CR>
-map <C-p> :cprevious<CR>
-nnoremap <Leader>a :cclose<CR>
+" map <C-n> :cnext<CR>
+" map <C-p> :cprevious<CR>
+" nnoremap <Leader>a :cclose<CR>
 
 au FileType go nmap <Leader>r <Plug>(go-run)
 au FileType go nmap <Leader>b <Plug>(go-build)
@@ -132,12 +132,12 @@ command! FZFMru call fzf#run({
 \  'options': '-m -x +s',
 \  'down':    '40%'})
 
-nmap <silent>;r :FZFMru<CR>
+ nmap <silent>;r :FZFMru<CR>
 
-nmap <silent>;w :set wrap!<CR>
-nmap <silent>;m :MarkedOpen!<CR>
+ nmap <silent>;w :set wrap!<CR>
+ nmap <silent>;m :MarkedOpen!<CR>
 
-nmap <silent>\\ :TagbarToggle<CR>
+ nmap <silent>\\ :TagbarToggle<CR>
 
 " inoremap <C-]> <C-x><C-o>
 
@@ -187,8 +187,8 @@ let g:coc_snippet_next = '<c-j>'
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
@@ -198,22 +198,38 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use <leader>x for convert visual selected code to snippet
-" xmap <leader>x  <Plug>(coc-convert-snippet)
+xmap <leader>x  <Plug>(coc-convert-snippet)
 
-
-" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Cursor over
 nnoremap <silent> K :call CocAction('doHover')<CR>

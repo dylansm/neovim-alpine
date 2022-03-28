@@ -51,6 +51,7 @@ RUN nvim +PlugInstall +qa  \
   coc-pairs \
   coc-prettier \
   coc-ultisnips \
+  coc-snippets \
   coc-tsserver | qa"  \
   && mkdir workdir \
   && touch .profile && echo 'alias ll="ls -al"' >> .profile

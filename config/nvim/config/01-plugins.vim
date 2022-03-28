@@ -50,7 +50,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'mitsuse/autocomplete-swift'
 Plug 'keith/swift.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 " Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 " Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 " Plug 'tpope/vim-dispatch', { 'for': 'clojure' }

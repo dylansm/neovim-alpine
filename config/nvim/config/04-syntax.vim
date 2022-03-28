@@ -1,7 +1,3 @@
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
 " let g:syntastic_eruby_ruby_quiet_messages =
     " \ {'regex': 'possibly useless'}
 " let g:syntastic_always_populate_loc_list = 1
@@ -50,7 +46,7 @@ au Syntax * RainbowParenthesesLoadBraces
 
 " automatically show info for identifier under cursor
 " let g:go_auto_type_info = 1
-let g:go_auto_sameids = 1
+" let g:go_auto_sameids = 1
 
 " let g:syntastic_swift_checkers = ['swiftlint']
 " let g:syntastic_swift_swiftlint_use_defaults = 1
@@ -70,6 +66,9 @@ au BufRead,BufNewFile *.java set ts=4 sw=4 sts=4
 au BufRead,BufNewFile *.scss set sw=2 sts=2
 au BufNewFile,BufRead * setlocal formatoptions-=o
 
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 au VimEnter * RainbowParenthesesToggle
 
 let g:vim_jsx_pretty_colorful_config = 1
