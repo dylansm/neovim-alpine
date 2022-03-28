@@ -37,7 +37,7 @@ RUN if [ ! -f package.json ] ; then echo '{"dependencies": {}}' > package.json ;
   coc-json \
   coc-pairs \
   coc-prettier \
-  coc-snippets \
+  coc-ultisnips \
   coc-tsserver --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
 WORKDIR /home/neovim
@@ -51,7 +51,6 @@ RUN nvim +PlugInstall +qa  \
   coc-pairs \
   coc-prettier \
   coc-ultisnips \
-  coc-snippets \
   coc-tsserver | qa"  \
   && mkdir workdir \
   && touch .profile && echo 'alias ll="ls -al"' >> .profile
