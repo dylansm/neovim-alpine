@@ -234,22 +234,26 @@ let g:coc_snippet_next = '<tab>'
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+
+
 " Cursor over
-"nnoremap <silent> K :call CocAction('doHover')<CR>
+nnoremap <silent> K :call CocAction('doHover')<CR>
 
 " Auto tooltip
-"function! ShowDocIfNoDiagnostic(timer_id)
-  "if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
-    "silent call CocActionAsync('doHover')
-  "endif
-"endfunction
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
 
-"function! s:show_hover_doc()
-  "call timer_start(500, 'ShowDocIfNoDiagnostic')
-"endfunction
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
 
-"autocmd CursorHoldI * :call <SID>show_hover_doc()
-"autocmd CursorHold * :call <SID>show_hover_doc()
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
+
 
 " diagnostic list
 nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
