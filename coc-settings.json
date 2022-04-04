@@ -33,7 +33,7 @@
     "default": "\uf29c"
   },
   "codeLens.enable": true,
-  "codeLens.separator": "🔍",
+  "codeLens.separator": "➤",
   "coc.preferences.jumpCommand": "drop",
   "coc.preferences.rootPatterns": [
     ".git",

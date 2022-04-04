@@ -6,6 +6,8 @@ map // <plug>NERDCommenterToggle
 nnoremap Y y$
 " Clear screen clears search highlighting.
 nnoremap <C-L> :nohl<CR><C-L>
+nmap <C-L> :call coc#float#close_all() <CR>
+
 " set background with same shortcut used in Keyboard Maestro
 function ChooseProfileVariant(type)
   if a:type == "light"
@@ -81,7 +83,8 @@ inoremap (<cr> (<cr>)<c-o>O
 inoremap <C-]> <C-o>a
 
 " Jump to the first placeholder by typing `<C-k>`.
-autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
+" imap is a problem
+"autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
 
 " map <C-n> :cnext<CR>
 " map <C-p> :cprevious<CR>
@@ -97,10 +100,10 @@ au FileType go nmap <Leader>i <Plug>(go-info)
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
-nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
-nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
-nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+"nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+"nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+"nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+"nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Clang Format
 au FileType c,cpp,objc nmap <silent> <Leader>f :ClangFormat<CR>
@@ -176,10 +179,10 @@ nmap <Leader>ll :set list!<CR>
 
 " CoC Town
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+"imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+"vmap <C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-j>'
@@ -191,7 +194,7 @@ let g:coc_snippet_prev = '<c-k>'
 " nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+"imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
