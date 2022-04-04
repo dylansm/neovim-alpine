@@ -14,8 +14,8 @@ let g:neosolarized_vertSplitBgTrans = 1
 " remember last position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-hi NERDTreeOpenable ctermfg=246 guifg=#20b950
-hi NERDTreeClosable ctermfg=250 guifg=#20b950
+"hi NERDTreeOpenable ctermfg=246 guifg=#20b950
+"hi NERDTreeClosable ctermfg=250 guifg=#20b950
 hi Title guifg=#20b950
 hi VertSplit ctermfg=2 ctermbg=NONE cterm=NONE
 hi StatusLineNC ctermbg=247 ctermfg=236
@@ -104,11 +104,11 @@ let g:tagbar_autofocus = 1
 " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " use 'f' to toggle filter
-let NERDTreeIgnore = ['\.DS_Store', '\.sass-cache']
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '–'
-let g:NERDTreeHighlightCursorline = 0
-let g:NERDTreeStatusline = 1
+"let NERDTreeIgnore = ['\.DS_Store', '\.sass-cache']
+"let g:NERDTreeDirArrowExpandable = '+'
+"let g:NERDTreeDirArrowCollapsible = '–'
+"let g:NERDTreeHighlightCursorline = 0
+"let g:NERDTreeStatusline = 1
 
 if exists("g:vdebug_options")
   let g:vdebug_options['port'] = 9001
@@ -119,8 +119,6 @@ endif
 " let g:UltiSnipsJumpForwardTrigger="<tab>"
 " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " let g:UltiSnipsEditSplit="horizontal"
-
-" let NERDSpaceDelims=1
 
 " custom comments
 " let g:NERDCustomDelimiters = {
@@ -194,3 +192,59 @@ let g:tagbar_ctags_bin = '/usr/bin/ctags'
 " CoC extensions
 let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-html', 'coc-pairs', 'coc-prettier', 'coc-tsserver', 'coc-ultisnips']
 " let g:coc_node_path = 'node-ts'
+
+" .............................................................................
+" lambdalisue/fern.vim
+" .............................................................................
+
+" Disable netrw.
+let g:loaded_netrw  = 1
+let g:loaded_netrwPlugin = 1
+let g:loaded_netrwSettings = 1
+let g:loaded_netrwFileHandlers = 1
+
+augroup my-fern-hijack
+  autocmd!
+  autocmd BufEnter * ++nested call s:hijack_directory()
+augroup END
+
+function! s:hijack_directory() abort
+  let path = expand('%:p')
+  if !isdirectory(path)
+    return
+  endif
+  bwipeout %
+  execute printf('Fern %s', fnameescape(path))
+endfunction
+
+" Custom settings and mappings.
+"let g:fern#disable_default_mappings = 1
+
+noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
+
+function! FernInit() abort
+  nmap <buffer><expr>
+        \ <Plug>(fern-my-open-expand-collapse)
+        \ fern#smart#leaf(
+        \   "\<Plug>(fern-action-open:select)",
+        \   "\<Plug>(fern-action-expand)",
+        \   "\<Plug>(fern-action-collapse)",
+        \ )
+  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
+  nmap <buffer> n <Plug>(fern-action-new-path)
+  nmap <buffer> d <Plug>(fern-action-remove)
+  nmap <buffer> m <Plug>(fern-action-move)
+  nmap <buffer> M <Plug>(fern-action-rename)
+  nmap <buffer> I <Plug>(fern-action-hidden-toggle)
+  nmap <buffer> r <Plug>(fern-action-reload)
+  nmap <buffer> K <Plug>(fern-action-mark-toggle)
+  nmap <buffer> b <Plug>(fern-action-open:split)
+  nmap <buffer> v <Plug>(fern-action-open:vsplit)
+  nmap <buffer><nowait> < <Plug>(fern-action-leave)
+  nmap <buffer><nowait> > <Plug>(fern-action-enter)
+endfunction
+
+augroup FernGroup
+  autocmd!
+  autocmd FileType fern call FernInit()
+augroup END

@@ -43,7 +43,7 @@ map <silent>˚ <C-W>+
 map <silent>˙ <C-w>>
 
 " toggle NERDTree
-map ;; :NERDTreeToggle<CR>
+"map ;; :NERDTreeToggle<CR>
 " map ;; :Lexplore<CR>
 
 " change window
