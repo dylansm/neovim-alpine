@@ -14,8 +14,6 @@ let g:neosolarized_vertSplitBgTrans = 1
 " remember last position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-"hi NERDTreeOpenable ctermfg=246 guifg=#20b950
-"hi NERDTreeClosable ctermfg=250 guifg=#20b950
 hi Title guifg=#20b950
 hi VertSplit ctermfg=2 ctermbg=NONE cterm=NONE
 hi StatusLineNC ctermbg=247 ctermfg=236
@@ -98,64 +96,13 @@ set rtp+=/usr/local/opt/fzf
 " tagbar
 let g:tagbar_autofocus = 1
 
-
-" let g:deoplete#enable_at_startup = 1
-" <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" use 'f' to toggle filter
-"let NERDTreeIgnore = ['\.DS_Store', '\.sass-cache']
-"let g:NERDTreeDirArrowExpandable = '+'
-"let g:NERDTreeDirArrowCollapsible = '–'
-"let g:NERDTreeHighlightCursorline = 0
-"let g:NERDTreeStatusline = 1
-
 if exists("g:vdebug_options")
   let g:vdebug_options['port'] = 9001
 endif
 
-" let g:UltiSnipsUsePythonVersion = 3
-" let g:UltiSnipsExpandTrigger="<C-J>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" let g:UltiSnipsEditSplit="horizontal"
-
-" custom comments
-" let g:NERDCustomDelimiters = {
-" \ 'javascript.jsx': { 'left': '{/*', 'right': '*/}'}
-" \ }
-
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬,trail:.
 set list listchars=tab:▸\ ,trail:.
-
-" let g:tagbar_type_go = {
-  " \ 'ctagstype' : 'go',
-  " \ 'kinds'     : [
-      " \ 'p:package',
-      " \ 'i:imports:1',
-      " \ 'c:constants',
-      " \ 'v:variables',
-      " \ 't:types',
-      " \ 'n:interfaces',
-      " \ 'w:fields',
-      " \ 'e:embedded',
-      " \ 'm:methods',
-      " \ 'r:constructor',
-      " \ 'f:functions'
-  " \ ],
-  " \ 'sro' : '.',
-  " \ 'kind2scope' : {
-      " \ 't' : 'ctype',
-      " \ 'n' : 'ntype'
-  " \ },
-  " \ 'scope2kind' : {
-      " \ 'ctype' : 't',
-      " \ 'ntype' : 'n'
-  " \ },
-  " \ 'ctagsbin'  : 'gotags',
-  " \ 'ctagsargs' : '-sort -silent'
-" \ }
 
 " Emmet / Zen Coding
 let g:user_emmet_install_global = 0
@@ -168,83 +115,25 @@ let g:user_emmet_settings = {
 " comments in jsonc
 au FileType json syntax match Comment +\/\/.\+$+
 
-" let ropevim_enable_shortcuts = 1
-
-" let g:rustfmt_autosave = 1
-" let g:rustfmt_command = "/Users/dylan/.cargo/bin/rustfmt"
-" let g:racer_cmd = "/Users/dylan/.cargo/bin/racer"
-" let g:racer_experimental_completer = 1
-
-" if filereadable('/Users/dylan/bin/linter_wrappers/eslint.sh')
-  " let g:ale_linters = ['eslint']
-  " let g:ale_javascript_eslint_use_global = 1
-  " let g:ale_javascript_eslint_executable = '/Users/dylan/bin/linter_wrappers/eslint.sh'
-" endif
-
-" let g:ale_fixers = {
-" \   'javascript': ['eslint'],
-" \   'css': ['stylelint'],
-" \   'rust': ['rustfmt'],
-" \}
-
 let g:tagbar_ctags_bin = '/usr/bin/ctags'
 
 " CoC extensions
 let g:coc_global_extensions = ['coc-json', 'coc-css', 'coc-html', 'coc-pairs', 'coc-prettier', 'coc-tsserver', 'coc-ultisnips']
 " let g:coc_node_path = 'node-ts'
 
-" .............................................................................
-" lambdalisue/fern.vim
-" .............................................................................
-
-" Disable netrw.
-let g:loaded_netrw  = 1
-let g:loaded_netrwPlugin = 1
-let g:loaded_netrwSettings = 1
-let g:loaded_netrwFileHandlers = 1
-
-augroup my-fern-hijack
-  autocmd!
-  autocmd BufEnter * ++nested call s:hijack_directory()
-augroup END
-
-function! s:hijack_directory() abort
-  let path = expand('%:p')
-  if !isdirectory(path)
-    return
-  endif
-  bwipeout %
-  execute printf('Fern %s', fnameescape(path))
+" Coc Explorer folder view
+function! s:DisableFileExplorer()
+    au! FileExplorer
 endfunction
 
-" Custom settings and mappings.
-"let g:fern#disable_default_mappings = 1
-
-noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
-
-function! FernInit() abort
-  nmap <buffer><expr>
-        \ <Plug>(fern-my-open-expand-collapse)
-        \ fern#smart#leaf(
-        \   "\<Plug>(fern-action-open:select)",
-        \   "\<Plug>(fern-action-expand)",
-        \   "\<Plug>(fern-action-collapse)",
-        \ )
-  nmap <buffer> <CR> <Plug>(fern-my-open-expand-collapse)
-  nmap <buffer> n <Plug>(fern-action-new-path)
-  nmap <buffer> d <Plug>(fern-action-remove)
-  nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> M <Plug>(fern-action-rename)
-  nmap <buffer> I <Plug>(fern-action-hidden-toggle)
-  nmap <buffer> r <Plug>(fern-action-reload)
-  nmap <buffer> K <Plug>(fern-action-mark-toggle)
-  nmap <buffer> b <Plug>(fern-action-open:split)
-  nmap <buffer> v <Plug>(fern-action-open:vsplit)
-  nmap <buffer><nowait> < <Plug>(fern-action-leave)
-  nmap <buffer><nowait> > <Plug>(fern-action-enter)
+function! s:OpenDirHere(dir)
+    if isdirectory(a:dir)
+	exec "silent CocCommand explorer --current-buffer" . a:dir
+    endif
 endfunction
 
-augroup FernGroup
-  autocmd!
-  autocmd FileType fern call FernInit()
-augroup END
+" Taken from vim-easytree plugin, and changed to use coc-explorer
+augroup CocExplorerDefault
+    autocmd VimEnter * call <SID>DisableFileExplorer()
+    autocmd BufEnter * call <SID>OpenDirHere(expand('<amatch>'))
+augroup end

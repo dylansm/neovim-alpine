@@ -2,6 +2,9 @@
 imap jj <ESC>
 " toggle comments
 map // <plug>NERDCommenterToggle
+" toggler coc-explorer
+nmap ;; :CocCommand explorer<CR>
+
 " yank to end of line
 nnoremap Y y$
 " Clear screen clears search highlighting.

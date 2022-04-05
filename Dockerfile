@@ -33,6 +33,7 @@ RUN if [ ! -f package.json ] ; then echo '{"dependencies": {}}' > package.json ;
   && npm install \
   coc-css \
   coc-eslint \
+  coc-explorer \
   coc-html \
   coc-json \
   coc-pairs \
@@ -46,6 +47,7 @@ RUN nvim +PlugInstall +qa  \
   && nvim +"CocInstall -sync \
   coc-css \
   coc-eslint \
+  coc-explorer \
   coc-html \
   coc-json \
   coc-pairs \
