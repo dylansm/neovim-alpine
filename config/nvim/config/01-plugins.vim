@@ -1,7 +1,8 @@
 call plug#begin()
 Plug 'scrooloose/nerdcommenter'
-"Plug 'scrooloose/nerdtree'
 Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/nerdfont.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -44,34 +45,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'mitsuse/autocomplete-swift'
 Plug 'keith/swift.vim'
 Plug 'SirVer/ultisnips'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
-"Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'peitalin/vim-jsx-typescript'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'junegunn/vim-github-dashboard'
-"Plug 'jwalton512/vim-blade'
-"Plug 'rhysd/vim-clang-format'
-"Plug 'tpope/vim-haml'
-" Plug 'w0rp/ale'
-" Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-" Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-" Plug 'tpope/vim-dispatch', { 'for': 'clojure' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" Plug 'tpope/vim-projectionist', { 'for': 'clojure' }
-" Plug 'venantius/vim-cljfmt', { 'for': 'clojure' }
-" Plug 'venantius/vim-eastwood', { 'for': 'clojure' }
-" Plug 'Shougo/deoplete-clangx'
-" Plug 'SirVer/ultisnips' | Plug 'dylansm/vim-snippets', { 'branch': 'main'} " Group dependencies, vim-snippets depends on ultisnips
-" Plug 'dansomething/vim-eclim', { 'for': 'java' }
-" Plug 'digitaltoad/vim-pug'
-" Plug 'dylansm/one-dark.vim'
-" Plug 'kewah/vim-stylefmt'
-" Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-" Plug 'mhartington/nvim-typescript'
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'scrooloose/syntastic'
-" Plug 'vim-scripts/mru.vim'
-" Plug 'Valloric/YouCompleteMe'
 
 " Add plugins to &runtimepath
 call plug#end()

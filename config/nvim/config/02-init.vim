@@ -181,3 +181,6 @@ augroup FernGroup
   autocmd!
   autocmd FileType fern call FernInit()
 augroup END
+
+" Use Nerd Fonts
+let g:fern#renderer = "nerdfont"
