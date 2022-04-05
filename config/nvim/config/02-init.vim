@@ -77,6 +77,7 @@ set encoding=utf-8
 setglobal fileencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
+set guicursor=
 
 if has('nvim')
   set shada='1000,f1,<500,:100,/100
@@ -147,13 +148,15 @@ function! s:hijack_directory() abort
     return
   endif
   bwipeout %
+  "execute printf('Fern %s -width=22 -keep', fnameescape(path))
   execute printf('Fern %s', fnameescape(path))
 endfunction
 
 " Custom settings and mappings.
 "let g:fern#disable_default_mappings = 1
 
-noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
+"noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=22 -keep<CR><C-w>=
+noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=22<CR><C-w>=
 
 function! FernInit() abort
   nmap <buffer><expr>
