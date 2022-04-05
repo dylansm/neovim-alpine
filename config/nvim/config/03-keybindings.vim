@@ -42,10 +42,6 @@ map <silent>∆ <C-W>-
 map <silent>˚ <C-W>+
 map <silent>˙ <C-w>>
 
-" toggle NERDTree
-"map ;; :NERDTreeToggle<CR>
-" map ;; :Lexplore<CR>
-
 " change window
 map <Leader>ww :winc w<CR>
 
@@ -81,14 +77,6 @@ inoremap (<cr> (<cr>)<c-o>O
 
 " exit pairs of all kind out-the-end
 inoremap <C-]> <C-o>a
-
-" Jump to the first placeholder by typing `<C-k>`.
-" imap is a problem
-"autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
-
-" map <C-n> :cnext<CR>
-" map <C-p> :cprevious<CR>
-" nnoremap <Leader>a :cclose<CR>
 
 au FileType go nmap <Leader>r <Plug>(go-run)
 au FileType go nmap <Leader>b <Plug>(go-build)
@@ -163,27 +151,6 @@ nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<CR>
 " Shortcut to rapidly toggle `set list`
 nmap <Leader>ll :set list!<CR>
 
-" Clojure
-" nnoremap <Leader>sh :Slamhound<CR>
-" Vim Fireplace
-" autocmd this so it's only on in clojure context
-" nmap <Leader>q cqq
-" nmap <Leader>c cqc
-" nmap ;c :Connect nrepl://127.0.0.1:50133 .<CR>
-
-" au FileType rust nmap <leader>rr <Plug>(rust-doc)
-" au FileType rust nmap <leader>rd <Plug>(rust-def)
-" au FileType rust nmap <leader>rs <Plug>(rust-def-split)
-" au FileType rust nmap rx <Plug>(rust-def-vertical)
-
-
-" CoC Town
-" Use <C-l> for trigger snippet expand.
-"imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-"vmap <C-j> <Plug>(coc-snippets-select)
-
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-j>'
 
@@ -255,8 +222,6 @@ endfunction
 
 autocmd CursorHoldI * :call <SID>show_hover_doc()
 autocmd CursorHold * :call <SID>show_hover_doc()
-
-
 
 " diagnostic list
 nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
