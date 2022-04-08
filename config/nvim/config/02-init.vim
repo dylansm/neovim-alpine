@@ -155,8 +155,8 @@ endfunction
 " Custom settings and mappings.
 "let g:fern#disable_default_mappings = 1
 
-"noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=22 -keep<CR><C-w>=
-noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=22<CR><C-w>=
+" Use -keep to prevent c-q from quitting
+noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=25 -stay -keep<CR><C-w>=
 
 function! FernInit() abort
   nmap <buffer><expr>
@@ -187,3 +187,4 @@ augroup END
 
 " Use Nerd Fonts
 let g:fern#renderer = "nerdfont"
+let g:fern#disable_drawer_smart_quit = 1

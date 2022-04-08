@@ -32,15 +32,11 @@ nnoremap <silent> <M-D> :call ChooseProfileVariant('')<CR>
 
 map <F7> :setlocal spell! spelllang=en_us<CR>
 
-" alt-shift + h,j,k,l keys
-map <silent>Ò :vertical res -10<CR>
-map <silent>Ô :res -10<CR>
-map <silent> :res +10<CR>
-map <silent>Ó :vertical res +10<CR>
-map <silent>¬ <C-w><
-map <silent>∆ <C-W>-
-map <silent>˚ <C-W>+
-map <silent>˙ <C-w>>
+" resize panes
+map [[ :vertical res -10<CR>
+map ]] :vertical res +10<CR>
+"map <silent>Ô :res -10<CR>
+"map <silent> :res +10<CR>
 
 " change window
 map <Leader>ww :winc w<CR>
