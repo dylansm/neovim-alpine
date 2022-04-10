@@ -14,8 +14,11 @@ RUN apk --no-cache add curl shadow sudo su-exec python3 py3-pip neovim fzf \
   && echo "${UNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers  \
   && sudo -u neovim pip3 install pynvim  \
   && apk del build-base gcc musl-dev  \
-  && mkdir -p /home/neovim/.local/bin \
-  && chown -R neovim:neovim /home/neovim/.local
+  && mkdir -p /home/neovim/.local/bin
+
+COPY ./rust/rust-analyzer .local/bin
+
+RUN chown -R neovim:neovim /home/neovim/.local
 
 WORKDIR /home/neovim/.config/nvim/autoload
 
@@ -29,7 +32,7 @@ RUN curl -fLO https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vi
 USER neovim
 
 # install rust - might not be necessary
-#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   #&& git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer \
   #&& /home/neovim/.cargo/bin/cargo xtask install --server
 

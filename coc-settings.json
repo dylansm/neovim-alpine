@@ -42,8 +42,12 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
+    "rust",
     "typescript",
     "typescriptreact",
     "css"
-  ]
+  ],
+  "rust-analyzer.serverPath": "/home/neovim/.local/bin/rust-analyzer",
+  "rust-analyzer.updates.checkOnStartup": false,
+  "rust-analyzer.cargo.autoreload": true
 }
