@@ -227,3 +227,9 @@ nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
 
 " fix issue
 nmap <leader>do <Plug>(coc-codeaction)
+
+" maybe needed / maybe not - depending on coc-extension
+"au FileType rust nmap <leader>rr <Plug>(rust-doc)
+"au FileType rust nmap <leader>rd <Plug>(rust-def)
+"au FileType rust nmap <leader>rs <Plug>(rust-def-split)
+"au FileType rust nmap rx <Plug>(rust-def-vertical)

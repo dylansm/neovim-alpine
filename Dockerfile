@@ -14,6 +14,7 @@ RUN apk --no-cache add curl shadow sudo su-exec python3 py3-pip neovim fzf \
   && echo "${UNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers  \
   && sudo -u neovim pip3 install pynvim  \
   && apk del build-base gcc musl-dev  \
+  && mkdir -p /home/neovim/.local/bin \
   && chown -R neovim:neovim /home/neovim/.local
 
 WORKDIR /home/neovim/.config/nvim/autoload
@@ -27,6 +28,11 @@ RUN curl -fLO https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vi
 
 USER neovim
 
+# install rust - might not be necessary
+#RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
+  #&& git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer \
+  #&& /home/neovim/.cargo/bin/cargo xtask install --server
+
 WORKDIR /.config/coc/extensions
 
 RUN if [ ! -f package.json ] ; then echo '{"dependencies": {}}' > package.json ; fi  \
@@ -37,6 +43,7 @@ RUN if [ ! -f package.json ] ; then echo '{"dependencies": {}}' > package.json ;
   coc-json \
   coc-pairs \
   coc-prettier \
+  coc-rust-analyzer \
   coc-ultisnips \
   coc-tsserver --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
@@ -50,6 +57,7 @@ RUN nvim +PlugInstall +qa  \
   coc-json \
   coc-pairs \
   coc-prettier \
+  coc-rust-analyzer \
   coc-ultisnips \
   coc-tsserver | qa"  \
   && mkdir workdir \

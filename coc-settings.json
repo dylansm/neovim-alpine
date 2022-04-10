@@ -45,13 +45,5 @@
     "typescript",
     "typescriptreact",
     "css"
-  ],
-  "diagnostic.checkCurrentLine": true,
-  "diagnostic.messageTarget": "float",
-  "diagnostic.separateRelatedInformationAsDiagnostics": true,
-  "diagnostic.virtualText": false,
-  "diagnostic.virtualTextCurrentLineOnly": false,
-  "prettier.disableSuccessMessage": true,
-  "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true
+  ]
 }
