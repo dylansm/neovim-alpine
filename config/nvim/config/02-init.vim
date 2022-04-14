@@ -156,7 +156,8 @@ endfunction
 "let g:fern#disable_default_mappings = 1
 
 " Use -keep to prevent c-q from quitting
-noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=25 -stay -keep<CR><C-w>=
+"noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=25 -stay -keep<CR><C-w>=
+noremap <silent> ;; :Fern . -drawer -reveal=% -toggle -width=25 -keep<CR><C-w>=
 
 function! FernInit() abort
   nmap <buffer><expr>

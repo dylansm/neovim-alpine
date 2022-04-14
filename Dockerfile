@@ -36,6 +36,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   #&& git clone https://github.com/rust-analyzer/rust-analyzer.git && cd rust-analyzer \
   #&& /home/neovim/.cargo/bin/cargo xtask install --server
 
+ENV PATH="/home/neovim/.cargo/bin:${PATH}"
+
 WORKDIR /.config/coc/extensions
 
 RUN if [ ! -f package.json ] ; then echo '{"dependencies": {}}' > package.json ; fi  \
