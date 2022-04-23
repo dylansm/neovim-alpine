@@ -37,6 +37,7 @@ RUN if [ ! -f package.json ] ; then echo '{"dependencies": {}}' > package.json ;
   coc-json \
   coc-pairs \
   coc-prettier \
+  coc-snippets \
   coc-ultisnips \
   coc-tsserver --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
@@ -50,6 +51,7 @@ RUN nvim +PlugInstall +qa  \
   coc-json \
   coc-pairs \
   coc-prettier \
+  coc-snippets \
   coc-ultisnips \
   coc-tsserver | qa"  \
   && mkdir workdir \

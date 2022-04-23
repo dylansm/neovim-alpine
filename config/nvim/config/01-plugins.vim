@@ -44,7 +44,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 Plug 'mitsuse/autocomplete-swift'
 Plug 'keith/swift.vim'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 
 " Add plugins to &runtimepath
 call plug#end()
