@@ -113,7 +113,7 @@ set list listchars=tab:▸\ ,trail:.
 " Emmet / Zen Coding
 "let g:user_emmet_install_global = 0
 "au FileType html,css,php,javascript,xml,js,jsx,tsx EmmetInstall
-let g:user_emmet_leader_key = '<c-,>' "c-,,
+let g:user_emmet_leader_key = '<c-l>'
 let g:user_emmet_settings = {
 \  'indentation' : '  '
 \}
