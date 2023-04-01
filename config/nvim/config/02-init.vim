@@ -111,9 +111,9 @@ set listchars=tab:▸\ ,eol:¬,trail:.
 set list listchars=tab:▸\ ,trail:.
 
 " Emmet / Zen Coding
-let g:user_emmet_install_global = 0
-au FileType html,css,php,javascript,xml,jsx,tsx EmmetInstall
-let g:user_emmet_leader_key = '<c-m>'
+"let g:user_emmet_install_global = 0
+"au FileType html,css,php,javascript,xml,js,jsx,tsx EmmetInstall
+let g:user_emmet_leader_key = '<c-,>' "c-,,
 let g:user_emmet_settings = {
 \  'indentation' : '  '
 \}
@@ -170,8 +170,8 @@ function! FernInit() abort
   nmap <buffer> n <Plug>(fern-action-new-path)
   nmap <buffer> d <Plug>(fern-action-remove)
   nmap <buffer> m <Plug>(fern-action-move)
-  nmap <buffer> M <Plug>(fern-action-rename)
-  nmap <buffer> I <Plug>(fern-action-hidden-toggle)
+  "nmap <buffer> M <Plug>(fern-action-rename)
+  nmap <buffer> i <Plug>(fern-action-hidden:toggle)
   nmap <buffer> r <Plug>(fern-action-reload)
   nmap <buffer> K <Plug>(fern-action-mark-toggle)
   nmap <buffer> b <Plug>(fern-action-open:split)
@@ -184,6 +184,9 @@ augroup FernGroup
   autocmd!
   autocmd FileType fern call FernInit()
 augroup END
+
+" Show all hidden files by default
+"let g:fern#default_hidden = 1
 
 " Use Nerd Fonts
 let g:fern#renderer = "nerdfont"

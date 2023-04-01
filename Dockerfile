@@ -1,4 +1,4 @@
-FROM node:17.7.2-alpine3.15
+FROM node:19-alpine3.16
 
 ENV UID=1000 GID=1000 UNAME=neovim GNAME=neovim SHELL=/bin/bash NVIM_CONFIG=/home/neovim/.config/nvim
 

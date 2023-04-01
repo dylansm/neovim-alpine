@@ -74,11 +74,11 @@ inoremap (<cr> (<cr>)<c-o>O
 " exit pairs of all kind out-the-end
 inoremap <C-]> <C-o>a
 
-au FileType go nmap <Leader>r <Plug>(go-run)
-au FileType go nmap <Leader>b <Plug>(go-build)
-au FileType go nmap <Leader>t <Plug>(go-test)
-au FileType go nmap <Leader>c <Plug>(go-coverage)
-au FileType go nmap <Leader>i <Plug>(go-info)
+"au FileType go nmap <Leader>r <Plug>(go-run)
+"au FileType go nmap <Leader>b <Plug>(go-build)
+"au FileType go nmap <Leader>t <Plug>(go-test)
+"au FileType go nmap <Leader>c <Plug>(go-coverage)
+"au FileType go nmap <Leader>i <Plug>(go-info)
 
 " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -150,11 +150,13 @@ nmap <Leader>ll :set list!<CR>
 
 
 " use <tab> for trigger completion and navigate to the next complete item
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? coc#_select_confirm() :
+      "\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      "\ <SID>check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
