@@ -1,4 +1,4 @@
-FROM node:19-alpine3.16
+FROM node:20-alpine3.19
 
 ENV UID=1000 GID=1000 UNAME=neovim GNAME=neovim SHELL=/bin/bash NVIM_CONFIG=/home/neovim/.config/nvim
 
@@ -12,7 +12,7 @@ RUN apk --no-cache add curl shadow sudo su-exec python3 py3-pip neovim fzf \
   && addgroup "${GNAME}"  \
   && adduser -D -G "${GNAME}" -g "" -s "${SHELL}" "${UNAME}"  \
   && echo "${UNAME} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers  \
-  && sudo -u neovim pip3 install pynvim  \
+  && sudo -u neovim pip3 install pynvim --break-system-packages  \
   && apk del build-base gcc musl-dev  \
   && chown -R neovim:neovim /home/neovim/.local
 
